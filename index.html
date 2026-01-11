@@ -3,91 +3,358 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Art Uploader - Automated Content Publishing Tool</title>
+  <title>AI Art Uploader - Smart Content Publishing for Creators</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      color: #fff;
+      background: #fff;
+      color: #1a1a1a;
       min-height: 100vh;
       line-height: 1.6;
     }
-    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    header { text-align: center; padding: 60px 0; }
-    h1 { font-size: 2.5rem; margin-bottom: 16px; }
-    .subtitle { color: #a0a0a0; font-size: 1.1rem; }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      margin: 48px 0;
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
     }
-    .feature {
-      background: rgba(255,255,255,0.05);
-      padding: 24px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    .feature h3 { margin-bottom: 8px; color: #60a5fa; }
-    .links {
+    .header-inner {
       display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 48px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
     }
-    .links a {
-      color: #a0a0a0;
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1a1a1a;
       text-decoration: none;
-      padding: 8px 16px;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 6px;
+    }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #1a1a1a; }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: #f5f5f5;
+      color: #666;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .cta-buttons { display: flex; gap: 12px; justify-content: center; }
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
       transition: all 0.2s;
     }
-    .links a:hover { color: #fff; border-color: #60a5fa; }
-    footer {
+    .btn-primary {
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .btn-primary:hover { background: #333; }
+    .btn-secondary {
+      background: #fff;
+      color: #1a1a1a;
+      border: 1px solid #ddd;
+    }
+    .btn-secondary:hover { border-color: #1a1a1a; }
+
+    /* Features */
+    .features {
+      padding: 80px 0;
+      border-top: 1px solid #eee;
+    }
+    .features-header {
       text-align: center;
-      padding: 40px 0;
+      margin-bottom: 60px;
+    }
+    .features-header h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .features-header p { color: #666; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .feature {
+      text-align: center;
+      padding: 32px 24px;
+    }
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.5rem;
+    }
+    .feature h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .feature p {
       color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* How it works */
+    .how-it-works {
+      padding: 80px 0;
+      background: #fafafa;
+    }
+    .how-it-works h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 60px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .step {
+      background: #fff;
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .step h3 { margin-bottom: 8px; }
+    .step p { color: #666; font-size: 0.95rem; }
+
+    /* Platforms */
+    .platforms {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .platforms h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .platforms > p {
+      color: #666;
+      margin-bottom: 40px;
+    }
+    .platform-logos {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .platform {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+    }
+    .platform-icon {
+      width: 64px;
+      height: 64px;
+      background: #f5f5f5;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid #eee;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .footer-links a:hover { color: #1a1a1a; }
+    .copyright { color: #999; font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .features-grid, .steps { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: column; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🎨 AI Art Uploader</h1>
-      <p class="subtitle">Personal tool for automated AI-generated artwork publishing with smart metadata and scheduling</p>
-    </header>
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="logo">AI Art Uploader</a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </nav>
+    </div>
+  </header>
 
-    <div class="features">
-      <div class="feature">
-        <h3>🤖 AI Metadata</h3>
-        <p>Automatically generates titles, descriptions and tags using OpenAI</p>
-      </div>
-      <div class="feature">
-        <h3>📅 Scheduling</h3>
-        <p>Schedule posts and maintain consistent publishing calendar</p>
-      </div>
-      <div class="feature">
-        <h3>📊 Analytics</h3>
-        <p>Track performance and optimize your content strategy</p>
-      </div>
-      <div class="feature">
-        <h3>🔗 Multi-Platform</h3>
-        <p>Publish to Pinterest, TikTok and other social platforms</p>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">✨ For AI Artists & Creators</span>
+      <h1>Publish your art<br>without the busywork</h1>
+      <p>Automate your social media workflow. AI-powered metadata generation, smart scheduling, and multi-platform publishing in one tool.</p>
+      <div class="cta-buttons">
+        <a href="https://github.com/vicomarcellus/ai-art-uploader-landing" class="btn btn-primary">View on GitHub</a>
+        <a href="#features" class="btn btn-secondary">Learn more</a>
       </div>
     </div>
+  </section>
 
-    <div class="links">
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Service</a>
+  <section class="features" id="features">
+    <div class="container">
+      <div class="features-header">
+        <h2>Everything you need to grow</h2>
+        <p>Focus on creating art, let us handle the publishing</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">🤖</div>
+          <h3>AI-Powered Metadata</h3>
+          <p>Automatically generate engaging titles, descriptions, and hashtags using OpenAI</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📅</div>
+          <h3>Smart Scheduling</h3>
+          <p>Plan your content calendar and post at optimal times for maximum engagement</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <h3>Analytics Dashboard</h3>
+          <p>Track performance, understand your audience, and optimize your strategy</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🖼️</div>
+          <h3>Batch Processing</h3>
+          <p>Upload multiple artworks at once and process them in bulk</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💧</div>
+          <h3>Watermarking</h3>
+          <p>Protect your work with automatic watermark application</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">☁️</div>
+          <h3>Cloud Storage</h3>
+          <p>Seamless Google Drive integration for your artwork library</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Upload your artwork</h3>
+          <p>Import images from your computer or connect Google Drive for automatic sync</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Generate metadata</h3>
+          <p>AI analyzes your art and creates optimized titles, descriptions, and tags</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Schedule & publish</h3>
+          <p>Set your posting schedule and let the tool handle the rest automatically</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="platforms">
+    <div class="container">
+      <h2>Multi-platform publishing</h2>
+      <p>Reach your audience wherever they are</p>
+      <div class="platform-logos">
+        <div class="platform">
+          <div class="platform-icon">📌</div>
+          <span>Pinterest</span>
+        </div>
+        <div class="platform">
+          <div class="platform-icon">🎵</div>
+          <span>TikTok</span>
+        </div>
+        <div class="platform">
+          <div class="platform-icon">📷</div>
+          <span>Instagram</span>
+        </div>
+        <div class="platform">
+          <div class="platform-icon">🐦</div>
+          <span>Twitter</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2025 AI Art Uploader. Personal use tool.</p>
+    <div class="container footer-inner">
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="https://github.com/vicomarcellus/ai-art-uploader-landing">GitHub</a>
+      </div>
+      <span class="copyright">© 2025 AI Art Uploader</span>
+    </div>
   </footer>
 </body>
 </html>
